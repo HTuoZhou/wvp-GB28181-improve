@@ -198,7 +198,8 @@ COLLATE = utf8mb4_general_ci;
 --
 DROP TABLE IF EXISTS `media_server`;
 CREATE TABLE `media_server` (
-                                `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                                `id` int NOT NULL AUTO_INCREMENT,
+                                `serverId` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                                 `ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                                 `hookIp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                                 `sdpIp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -219,8 +220,7 @@ CREATE TABLE `media_server` (
                                 `createTime` datetime NOT NULL,
                                 `updateTime` datetime NOT NULL,
                                 `hookAliveInterval` int NOT NULL,
-                                PRIMARY KEY (`id`) USING BTREE,
-                                UNIQUE KEY `media_server_i` (`ip`,`httpPort`) USING BTREE
+                                PRIMARY KEY (`id`) USING BTREE
 )
 ENGINE=InnoDB
 AUTO_INCREMENT=1
