@@ -1,6 +1,5 @@
 package com.gengersoft.iot.vmp.entity.vo;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -9,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author HTuoZhou
@@ -18,7 +17,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Accessors(chain = true)
-@ApiModel(value = "PlatformCatalogVO对象", description = "")
 public class PlatformCatalogVO implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,6 +1,5 @@
 package com.gengersoft.iot.vmp.common.base;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -9,13 +8,10 @@ import lombok.Data;
 @Data
 public class ApiFinalResult<T> {
 
-    @ApiModelProperty(value = "返回码")
     private Integer code;
 
-    @ApiModelProperty(value = "返回消息")
     private String message;
 
-    @ApiModelProperty(value = "返回数据")
     private T data;
 
     public ApiFinalResult() {

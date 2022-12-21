@@ -1,11 +1,11 @@
 package com.gengersoft.iot.vmp.service;
 
-import com.gengersoft.iot.vmp.entity.po.PlatformGbChannelPO;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gengersoft.iot.vmp.entity.po.PlatformGbChannelPO;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author HTuoZhou

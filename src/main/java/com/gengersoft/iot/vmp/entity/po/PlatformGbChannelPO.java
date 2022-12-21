@@ -4,16 +4,15 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author HTuoZhou
@@ -23,7 +22,6 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @TableName("platform_gb_channel")
-@ApiModel(value = "PlatformGbChannelPO对象", description = "")
 public class PlatformGbChannelPO implements Serializable {
 
     private static final long serialVersionUID = 1L;

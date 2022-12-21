@@ -18,7 +18,7 @@ public class MybatisPlusGenerator {
     public static void main(String[] args) {
         FastAutoGenerator.create("jdbc:mysql://192.168.176.169:3306/wvp?serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false&characterEncoding=utf8", "root", "123456")
                 .globalConfig(builder -> builder.author("HTuoZhou")
-                        .enableSwagger()
+                        // .enableSwagger()
                         // .fileOverride()
                         .outputDir(System.getProperty("user.dir") + "/mybatis-plus-generator" + "/src/main/java")
                         .disableOpenDir())

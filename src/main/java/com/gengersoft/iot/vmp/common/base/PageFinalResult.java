@@ -1,7 +1,6 @@
 package com.gengersoft.iot.vmp.common.base;
 
 import cn.hutool.core.util.PageUtil;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -14,19 +13,14 @@ import java.util.Objects;
 @Data
 public class PageFinalResult<T> {
 
-    @ApiModelProperty(value = "当前页码")
     private Integer pageNum;
 
-    @ApiModelProperty(value = "每页大小")
     private Integer pageSize;
 
-    @ApiModelProperty(value = "记录总数")
     private Integer totalCount;
 
-    @ApiModelProperty(value = "页码总数")
     private Integer pageCount;
 
-    @ApiModelProperty(value = "分页数据")
     private List<T> pageData;
 
     public PageFinalResult() {

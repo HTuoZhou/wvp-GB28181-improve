@@ -1,7 +1,6 @@
 package com.gengersoft.iot.vmp.entity.po;
 
 import com.baomidou.mybatisplus.annotation.*;
-import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -11,7 +10,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author HTuoZhou
@@ -21,7 +20,6 @@ import java.time.LocalDateTime;
 @Setter
 @Accessors(chain = true)
 @TableName("device")
-@ApiModel(value = "DevicePO对象", description = "")
 public class DevicePO implements Serializable {
 
     private static final long serialVersionUID = 1L;

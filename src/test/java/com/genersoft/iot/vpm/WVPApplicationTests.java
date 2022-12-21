@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class WVPApplicationTests {
 
     @Test
-    public void test() {}
+    public void test() {
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.gengersoft.iot.vmp.entity.bo;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author HTuoZhou
@@ -19,7 +18,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Accessors(chain = true)
-@ApiModel(value = "DeviceChannelBO对象", description = "")
 public class DeviceChannelBO implements Serializable {
 
     private static final long serialVersionUID = 1L;

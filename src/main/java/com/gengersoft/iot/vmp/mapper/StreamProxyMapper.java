@@ -1,11 +1,11 @@
 package com.gengersoft.iot.vmp.mapper;
 
-import com.gengersoft.iot.vmp.entity.po.StreamProxyPO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gengersoft.iot.vmp.entity.po.StreamProxyPO;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author HTuoZhou
