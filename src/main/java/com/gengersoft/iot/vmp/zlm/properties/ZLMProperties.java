@@ -1,4 +1,4 @@
-package com.gengersoft.iot.vmp.zlmediakit.properties;
+package com.gengersoft.iot.vmp.zlm.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "zlm")
 @Data
-public class ZLMediaKitProperties {
+public class ZLMProperties {
 
     private String serverId;
     private String ip;
@@ -19,11 +19,11 @@ public class ZLMediaKitProperties {
     private String sdpIp;
     private String streamIp;
     private Integer httpPort;
-    private Integer httpSslPort;
+    private Integer httpSslPort = 0;
     private Integer rtmpPort;
-    private Integer rtmpSslPort;
+    private Integer rtmpSslPort = 0;
     private Integer rtspPort;
-    private Integer rtspSslPort;
+    private Integer rtspSslPort = 0;
     private Integer rtpProxyPort;
     private Boolean autoConfig;
     private String secret;

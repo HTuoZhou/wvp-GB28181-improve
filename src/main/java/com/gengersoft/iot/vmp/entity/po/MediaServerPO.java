@@ -1,6 +1,7 @@
 package com.gengersoft.iot.vmp.entity.po;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.gengersoft.iot.vmp.entity.bo.MediaServerBO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -89,6 +90,28 @@ public class MediaServerPO implements Serializable {
 
     @TableField("hookAliveInterval")
     private Integer hookAliveInterval;
+    
+    public void bo2po(MediaServerBO mediaServerBO) {
+        this.setServerId(mediaServerBO.getServerId());
+        this.setIp(mediaServerBO.getIp());
+        this.setHookIp(mediaServerBO.getHookIp());
+        this.setSdpIp(mediaServerBO.getSdpIp());
+        this.setStreamIp(mediaServerBO.getStreamIp());
+        this.setHttpPort(mediaServerBO.getHttpPort());
+        this.setHttpSSlPort(mediaServerBO.getHttpSSlPort());
+        this.setRtmpPort(mediaServerBO.getRtmpPort());
+        this.setRtmpSSlPort(mediaServerBO.getRtmpSSlPort());
+        this.setRtpProxyPort(mediaServerBO.getRtpProxyPort());
+        this.setRtspPort(mediaServerBO.getRtspPort());
+        this.setRtspSSLPort(mediaServerBO.getRtspSSLPort());
+        this.setAutoConfig(mediaServerBO.getAutoConfig());
+        this.setSecret(mediaServerBO.getSecret());
+        this.setRtpEnable(mediaServerBO.getRtpEnable());
+        this.setRtpPortRange(mediaServerBO.getRtpPortRange());
+        this.setRecordAssistPort(mediaServerBO.getRecordAssistPort());
+        this.setDefaultServer(mediaServerBO.getDefaultServer());
+        this.setHookAliveInterval(mediaServerBO.getHookAliveInterval());
+    }
 
 
 }

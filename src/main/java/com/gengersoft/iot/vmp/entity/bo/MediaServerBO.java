@@ -1,5 +1,6 @@
 package com.gengersoft.iot.vmp.entity.bo;
 
+import com.gengersoft.iot.vmp.entity.po.MediaServerPO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -65,6 +66,32 @@ public class MediaServerBO implements Serializable {
     private LocalDateTime updateTime;
 
     private Integer hookAliveInterval;
+
+    public MediaServerPO bo2po() {
+        MediaServerPO mediaServerPO = new MediaServerPO();
+
+        mediaServerPO.setServerId(getServerId());
+        mediaServerPO.setIp(getIp());
+        mediaServerPO.setHookIp(getHookIp());
+        mediaServerPO.setSdpIp(getSdpIp());
+        mediaServerPO.setStreamIp(getStreamIp());
+        mediaServerPO.setHttpPort(getHttpPort());
+        mediaServerPO.setHttpSSlPort(getHttpSSlPort());
+        mediaServerPO.setRtmpPort(getRtmpPort());
+        mediaServerPO.setRtmpSSlPort(getRtmpSSlPort());
+        mediaServerPO.setRtpProxyPort(getRtpProxyPort());
+        mediaServerPO.setRtspPort(getRtspPort());
+        mediaServerPO.setRtspSSLPort(getRtspSSLPort());
+        mediaServerPO.setAutoConfig(getAutoConfig());
+        mediaServerPO.setSecret(getSecret());
+        mediaServerPO.setRtpEnable(getRtpEnable());
+        mediaServerPO.setRtpPortRange(getRtpPortRange());
+        mediaServerPO.setRecordAssistPort(getRecordAssistPort());
+        mediaServerPO.setDefaultServer(getDefaultServer());
+        mediaServerPO.setHookAliveInterval(getHookAliveInterval());
+
+        return mediaServerPO;
+    }
 
 
 }

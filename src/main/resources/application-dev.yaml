@@ -57,16 +57,10 @@ zlm:
   stream-ip: 192.168.176.169
   # [必须修改] zlm服务器的http.port
   http-port: 8080
-  # [可选] zlm服务器的http.sslport, 置空使用zlm配置文件配置
-  http-ssl-port: 443
   # [可选] zlm服务器的rtmp.port, 置空使用zlm配置文件配置
   rtmp-port: 8935
-  # [可选] zlm服务器的rtmp.sslport, 置空使用zlm配置文件配置
-  rtmp-ssl-port: 0
   # [可选] zlm服务器的 rtsp.port, 置空使用zlm配置文件配置
   rtsp-port: 8554
-  # [可选] zlm服务器的 rtsp.sslport, 置空使用zlm配置文件配置
-  rtsp-ssl-port: 0
   # [可选] zlm服务器的 rtp_proxy.port, 置空使用zlm配置文件配置
   rtp-proxy-port: 10000
   # [可选] 是否自动配置ZLM, 如果希望手动配置ZLM, 可以设为false, 不建议新接触的用户修改
