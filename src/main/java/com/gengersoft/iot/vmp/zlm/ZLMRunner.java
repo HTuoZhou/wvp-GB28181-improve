@@ -24,12 +24,15 @@ public class ZLMRunner implements CommandLineRunner {
     @Autowired
     private IMediaServerService mediaServerService;
 
+    @Autowired
+    private ZLMManager zlmManager;
+
     @Override
     public void run(String... args) throws Exception {
         MediaServerBO mediaServerBO = properties2bo();
         mediaServerService.saveOrUpdateMediaServer(mediaServerBO);
 
-        
+        zlmManager.setServerConfig();
     }
 
     public MediaServerBO properties2bo() {

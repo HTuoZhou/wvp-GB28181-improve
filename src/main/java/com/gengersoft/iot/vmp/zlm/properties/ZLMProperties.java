@@ -19,7 +19,7 @@ public class ZLMProperties {
     private String sdpIp;
     private String streamIp;
     private Integer httpPort;
-    private Integer httpSslPort = 0;
+    private Integer httpSslPort = 443;
     private Integer rtmpPort;
     private Integer rtmpSslPort = 0;
     private Integer rtspPort;
