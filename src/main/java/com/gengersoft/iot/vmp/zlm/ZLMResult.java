@@ -12,6 +12,8 @@ public class ZLMResult {
 
     private Integer code;
 
+    private Integer changed;
+
     private String msg;
 
     private Integer result;

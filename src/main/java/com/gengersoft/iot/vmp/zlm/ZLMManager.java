@@ -3,6 +3,7 @@ package com.gengersoft.iot.vmp.zlm;
 import com.gengersoft.iot.vmp.common.constant.CommonConstant;
 import com.gengersoft.iot.vmp.common.util.CommonUtils;
 import com.gengersoft.iot.vmp.common.util.HttpUtils;
+import com.gengersoft.iot.vmp.zlm.constant.ZLMConstant;
 import com.gengersoft.iot.vmp.zlm.properties.ZLMProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,10 +66,29 @@ public class ZLMManager {
         try {
             ZLMResult result = postForm(ZLMConstant.SET_SERVER_CONFIG, param);
             if (result.getCode() == 0) {
-                log.info("[ZLM] ZLM设置服务器配置成功, 若第一次配置，请重启以保证配置生效");
+                if (result.getChanged() > 0) {
+                    log.info("[ZLM] [ZLM ServerId：{}]设置服务器配置成功, 存在配置变更，需要重启以保证配置生效！",zlmProperties.getServerId());
+                    restartServer();
+                } else {
+                    log.info("[ZLM] [ZLM ServerId：{}]设置服务器配置成功, 不存在配置变更",zlmProperties.getServerId());
+                }
             }
         } catch (Exception e) {
-            log.error("[ZLM] ZLM设置服务器配置失败，请确认ZLM是否启动！");
+            log.error("[ZLM] [ZLM ServerId：{}]设置服务器配置失败，请确认ZLM是否启动！",zlmProperties.getServerId());
+        }
+    }
+
+    /**
+     * 重启服务器，只有Daemon方式才能重启，否则是直接关闭
+     */
+    public void restartServer() {
+        ZLMResult result = postForm(ZLMConstant.RESTART_SERVER, new HashMap<>());
+        try {
+            if (result.getCode() == 0) {
+                log.info("[ZLM] [ZLM ServerId：{}]重启服务器成功，{}！",zlmProperties.getServerId(),result.getMsg());
+            }
+        } catch (Exception e) {
+            log.error("[ZLM] [ZLM ServerId：{}]重启服务器失败，请确认ZLM是否启动！",zlmProperties.getServerId());
         }
     }
 
