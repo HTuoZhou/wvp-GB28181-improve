@@ -42,9 +42,12 @@ public class ZLMManager {
         if (CommonConstant.LINUX_OS && Objects.equals(zlmProperties.getHookIp(), CommonConstant.DEFAULT_LOCAL_IP)) {
             hookIp = CommonUtils.localIP();
         }
+        // hookPrefix = String.format(ZLMConstant.HOOK_URL_FMT, hookIp + ":" +
+        //         environment.getProperty(CommonConstant.SERVER_PORT) +
+        //         environment.getProperty(CommonConstant.SERVER_SERVLET_CONTEXT_PATH));
+
         hookPrefix = String.format(ZLMConstant.HOOK_URL_FMT, hookIp + ":" +
-                environment.getProperty(CommonConstant.SERVER_PORT) +
-                environment.getProperty(CommonConstant.SERVER_SERVLET_CONTEXT_PATH));
+                environment.getProperty(CommonConstant.SERVER_PORT));
 
         Map<String, Object> param = new HashMap<>();
         param.put("api.secret", zlmProperties.getSecret());
