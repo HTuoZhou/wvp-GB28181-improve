@@ -45,5 +45,7 @@ public class UserPO implements Serializable {
     @TableField("pushKey")
     private String pushKey;
 
+    @TableField(exist = false)
+    private UserRolePO role;
 
 }

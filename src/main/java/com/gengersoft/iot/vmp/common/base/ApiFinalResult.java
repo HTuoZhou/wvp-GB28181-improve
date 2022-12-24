@@ -10,41 +10,41 @@ public class ApiFinalResult<T> {
 
     private Integer code;
 
-    private String message;
+    private String msg;
 
     private T data;
 
     public ApiFinalResult() {
     }
 
-    public ApiFinalResult(Integer code, String message) {
+    public ApiFinalResult(Integer code, String msg) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
     }
 
-    public ApiFinalResult(Integer code, String message, T data) {
+    public ApiFinalResult(Integer code, String msg, T data) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
         this.data = data;
     }
 
     public ApiFinalResult(ResultCodeEnum resultCodeEnum) {
         this.code = resultCodeEnum.getCode();
-        this.message = resultCodeEnum.getMessage();
+        this.msg = resultCodeEnum.getMsg();
     }
 
     public ApiFinalResult(ResultCodeEnum resultCodeEnum, T data) {
         this.code = resultCodeEnum.getCode();
-        this.message = resultCodeEnum.getMessage();
+        this.msg = resultCodeEnum.getMsg();
         this.data = data;
     }
 
-    public static <T> ApiFinalResult<T> success(Integer code, String message) {
-        return new ApiFinalResult<>(code, message);
+    public static <T> ApiFinalResult<T> success(Integer code, String msg) {
+        return new ApiFinalResult<>(code, msg);
     }
 
-    public static <T> ApiFinalResult<T> success(Integer code, String message, T data) {
-        return new ApiFinalResult<>(code, message, data);
+    public static <T> ApiFinalResult<T> success(Integer code, String msg, T data) {
+        return new ApiFinalResult<>(code, msg, data);
     }
 
     public static <T> ApiFinalResult<T> success() {
@@ -55,12 +55,12 @@ public class ApiFinalResult<T> {
         return new ApiFinalResult<>(ResultCodeEnum.SUCCESS, data);
     }
 
-    public static <T> ApiFinalResult<T> error(Integer code, String message) {
-        return new ApiFinalResult<>(code, message);
+    public static <T> ApiFinalResult<T> error(Integer code, String msg) {
+        return new ApiFinalResult<>(code, msg);
     }
 
-    public static <T> ApiFinalResult<T> error(Integer code, String message, T data) {
-        return new ApiFinalResult<>(code, message, data);
+    public static <T> ApiFinalResult<T> error(Integer code, String msg, T data) {
+        return new ApiFinalResult<>(code, msg, data);
     }
 
     public static <T> ApiFinalResult<T> error(ResultCodeEnum resultCodeEnum) {

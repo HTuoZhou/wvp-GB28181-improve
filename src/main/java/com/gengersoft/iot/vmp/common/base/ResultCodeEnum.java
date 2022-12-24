@@ -8,10 +8,11 @@ public enum ResultCodeEnum {
     /**
      * 请求成功
      */
-    SUCCESS(2000000, "请求成功"),
+    // SUCCESS(2000000, "请求成功"),
+    SUCCESS(0, "请求成功"),
 
     /**
-     * 求失败
+     * 请求失败
      */
     FAIL(2000001, "请求失败"),
 
@@ -28,18 +29,18 @@ public enum ResultCodeEnum {
     /**
      * 状态描述信息
      */
-    private final String message;
+    private final String msg;
 
-    ResultCodeEnum(int code, String message) {
+    ResultCodeEnum(int code, String msg) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
     }
 
     public Integer getCode() {
         return code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 }

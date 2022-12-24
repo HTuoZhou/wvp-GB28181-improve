@@ -10,24 +10,24 @@ public class BusinessException extends RuntimeException {
 
     private Integer code;
 
-    private String message;
+    private String msg;
 
     private Object data;
 
     public BusinessException() {
         this.code = ResultCodeEnum.FAIL.getCode();
-        this.message = ResultCodeEnum.FAIL.getMessage();
+        this.msg = ResultCodeEnum.FAIL.getMsg();
     }
 
     public BusinessException(Object data) {
         this.code = ResultCodeEnum.FAIL.getCode();
-        this.message = ResultCodeEnum.FAIL.getMessage();
+        this.msg = ResultCodeEnum.FAIL.getMsg();
         this.data = data;
     }
 
     public BusinessException(ResultCodeEnum resultCodeEnum, Object data) {
         this.code = resultCodeEnum.getCode();
-        this.message = resultCodeEnum.getMessage();
+        this.msg = resultCodeEnum.getMsg();
         this.data = data;
     }
 }
