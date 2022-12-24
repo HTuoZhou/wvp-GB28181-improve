@@ -43,7 +43,7 @@ public class SIPRunner implements CommandLineRunner {
         if (sipProperties.getIp().indexOf(separator) > 0) {
             String[] split = sipProperties.getIp().split(separator);
             monitorIps.addAll(Arrays.asList(split));
-        }else {
+        } else {
             monitorIps.add(sipProperties.getIp());
         }
 
@@ -59,10 +59,10 @@ public class SIPRunner implements CommandLineRunner {
         }
     }
 
-    private void addListeningPoint(String monitorIp, int port){
+    private void addListeningPoint(String monitorIp, int port) {
         SipStackImpl sipStack;
         try {
-            sipStack = (SipStackImpl)sipFactory.createSipStack(DefaultProperties.getProperties(monitorIp, false));
+            sipStack = (SipStackImpl) sipFactory.createSipStack(DefaultProperties.getProperties(monitorIp, false));
         } catch (PeerUnavailableException e) {
             log.error("[Sip Server] SIP服务启动失败， 监听地址{}失败,请检查ip是否正确", monitorIp);
             return;
@@ -70,7 +70,7 @@ public class SIPRunner implements CommandLineRunner {
 
         try {
             ListeningPoint tcpListeningPoint = sipStack.createListeningPoint(monitorIp, port, "TCP");
-            SipProviderImpl tcpSipProvider = (SipProviderImpl)sipStack.createSipProvider(tcpListeningPoint);
+            SipProviderImpl tcpSipProvider = (SipProviderImpl) sipStack.createSipProvider(tcpListeningPoint);
 
             tcpSipProvider.setDialogErrorsAutomaticallyHandled();
             tcpSipProvider.addSipListener(sipProcessorObserver);
@@ -78,9 +78,9 @@ public class SIPRunner implements CommandLineRunner {
 
             log.info("[Sip Server] tcp://{}:{} 启动成功", monitorIp, port);
         } catch (TransportNotSupportedException
-                 | TooManyListenersException
-                 | ObjectInUseException
-                 | InvalidArgumentException e) {
+                | TooManyListenersException
+                | ObjectInUseException
+                | InvalidArgumentException e) {
             log.error("[Sip Server] tcp://{}:{} SIP服务启动失败,请检查端口是否被占用或者ip是否正确"
                     , monitorIp, port);
         }
@@ -88,16 +88,16 @@ public class SIPRunner implements CommandLineRunner {
         try {
             ListeningPoint udpListeningPoint = sipStack.createListeningPoint(monitorIp, port, "UDP");
 
-            SipProviderImpl udpSipProvider = (SipProviderImpl)sipStack.createSipProvider(udpListeningPoint);
+            SipProviderImpl udpSipProvider = (SipProviderImpl) sipStack.createSipProvider(udpListeningPoint);
             udpSipProvider.addSipListener(sipProcessorObserver);
 
             udpSipProviderMap.put(monitorIp, udpSipProvider);
 
             log.info("[Sip Server] udp://{}:{} 启动成功", monitorIp, port);
         } catch (TransportNotSupportedException
-                 | TooManyListenersException
-                 | ObjectInUseException
-                 | InvalidArgumentException e) {
+                | TooManyListenersException
+                | ObjectInUseException
+                | InvalidArgumentException e) {
             log.error("[Sip Server] udp://{}:{} SIP服务启动失败,请检查端口是否被占用或者ip是否正确"
                     , monitorIp, port);
         }

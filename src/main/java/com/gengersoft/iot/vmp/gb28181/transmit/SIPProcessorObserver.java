@@ -11,7 +11,7 @@ import javax.sip.*;
  */
 @Component
 @Slf4j
-public class SIPProcessorObserver implements ISIPProcessorObserver{
+public class SIPProcessorObserver implements ISIPProcessorObserver {
 
     @Override
     public void processRequest(RequestEvent requestEvent) {

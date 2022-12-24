@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ApiFinalResult<Object> exceptionHandler(Exception e, HttpServletRequest request) {
         log.info("请求URL : {}", request.getRequestURL().toString(), e);
-        return ApiFinalResult.error(ResultCodeEnum.ERROR, e.getLocalizedMessage());
+        return ApiFinalResult.error(ResultCodeEnum.FAIL, e.getLocalizedMessage());
     }
 
     /**
@@ -63,7 +63,7 @@ public class GlobalExceptionHandler {
         }
         stringBuilder.substring(0, stringBuilder.length() - 1);
 
-        return ApiFinalResult.error(ResultCodeEnum.FAILED_PARAMETER, stringBuilder);
+        return ApiFinalResult.error(ResultCodeEnum.PARAMETER, stringBuilder);
     }
 
     /**
@@ -82,7 +82,7 @@ public class GlobalExceptionHandler {
         }
         stringBuilder.substring(0, stringBuilder.length() - 1);
 
-        return ApiFinalResult.error(ResultCodeEnum.FAILED_PARAMETER, stringBuilder);
+        return ApiFinalResult.error(ResultCodeEnum.PARAMETER, stringBuilder);
     }
 
 }

@@ -8,29 +8,23 @@ public enum ResultCodeEnum {
     /**
      * 请求成功
      */
-    SUCCESS(200, "成功"),
+    SUCCESS(2000000, "请求成功"),
+
     /**
-     * 未认证
+     * 求失败
      */
-    FAILED_UN_AUTHENTICATION(401, "未认证"),
-    /**
-     * 未授权
-     */
-    FAILED_UN_AUTHORIZATION(403, "未授权"),
-    /**
-     * 请求失败
-     */
-    ERROR(500, "失败"),
+    FAIL(2000001, "请求失败"),
+
     /**
      * 参数校验异常
      */
-    FAILED_PARAMETER(600, "参数校验异常");
-
+    PARAMETER(2000002, "参数校验异常");
 
     /**
      * 状态码
      */
     private final Integer code;
+
     /**
      * 状态描述信息
      */

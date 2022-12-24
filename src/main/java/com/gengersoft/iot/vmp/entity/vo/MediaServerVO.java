@@ -66,5 +66,7 @@ public class MediaServerVO implements Serializable {
 
     private Integer hookAliveInterval;
 
+    private LocalDateTime hookAliveLastTime;
+
 
 }

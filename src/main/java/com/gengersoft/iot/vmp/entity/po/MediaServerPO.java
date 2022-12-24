@@ -90,7 +90,10 @@ public class MediaServerPO implements Serializable {
 
     @TableField("hookAliveInterval")
     private Integer hookAliveInterval;
-    
+
+    @TableField("hookAliveLastTime")
+    private LocalDateTime hookAliveLastTime;
+
     public void bo2po(MediaServerBO mediaServerBO) {
         this.setServerId(mediaServerBO.getServerId());
         this.setIp(mediaServerBO.getIp());

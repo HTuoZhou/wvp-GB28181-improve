@@ -37,6 +37,7 @@ public class HttpUtils {
         formReqParams.setAll(param);
         return zlmPostForm(url, formReqParams);
     }
+
     public static ZLMResult zlmPostForm(String url, MultiValueMap<String, Object> param) {
         String responseStr = post(url, param, MediaType.APPLICATION_FORM_URLENCODED);
         return JSON.parseObject(responseStr, ZLMResult.class);

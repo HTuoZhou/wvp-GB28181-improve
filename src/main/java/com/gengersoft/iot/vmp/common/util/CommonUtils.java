@@ -14,12 +14,12 @@ import java.util.Enumeration;
  */
 public class CommonUtils {
 
-    public static String localIP(){
+    public static String localIP() {
         try {
             for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
                 NetworkInterface intf = en.nextElement();
                 String name = intf.getName();
-                if (!name.contains("docker") && !name.contains("lo") && !name.startsWith("veth")&&!name.startsWith("cali")) {
+                if (!name.contains("docker") && !name.contains("lo") && !name.startsWith("veth") && !name.startsWith("cali")) {
                     for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                         InetAddress inetAddress = enumIpAddr.nextElement();
                         if (!inetAddress.isLoopbackAddress()) {

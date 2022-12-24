@@ -15,13 +15,13 @@ public class BusinessException extends RuntimeException {
     private Object data;
 
     public BusinessException() {
-        this.code = ResultCodeEnum.ERROR.getCode();
-        this.message = ResultCodeEnum.ERROR.getMessage();
+        this.code = ResultCodeEnum.FAIL.getCode();
+        this.message = ResultCodeEnum.FAIL.getMessage();
     }
 
     public BusinessException(Object data) {
-        this.code = ResultCodeEnum.ERROR.getCode();
-        this.message = ResultCodeEnum.ERROR.getMessage();
+        this.code = ResultCodeEnum.FAIL.getCode();
+        this.message = ResultCodeEnum.FAIL.getMessage();
         this.data = data;
     }
 

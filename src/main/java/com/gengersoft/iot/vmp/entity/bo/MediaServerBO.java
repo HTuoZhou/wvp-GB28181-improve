@@ -67,6 +67,8 @@ public class MediaServerBO implements Serializable {
 
     private Integer hookAliveInterval;
 
+    private LocalDateTime hookAliveLastTime;
+
     public MediaServerPO bo2po() {
         MediaServerPO mediaServerPO = new MediaServerPO();
 
