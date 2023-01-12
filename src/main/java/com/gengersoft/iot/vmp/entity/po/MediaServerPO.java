@@ -116,5 +116,34 @@ public class MediaServerPO implements Serializable {
         this.setHookAliveInterval(mediaServerBO.getHookAliveInterval());
     }
 
+    public MediaServerBO po2vo() {
+        MediaServerBO mediaServerBO = new MediaServerBO();
+
+        mediaServerBO.setId(getId());
+        mediaServerBO.setServerId(getServerId());
+        mediaServerBO.setIp(getIp());
+        mediaServerBO.setHookIp(getHookIp());
+        mediaServerBO.setSdpIp(getSdpIp());
+        mediaServerBO.setStreamIp(getStreamIp());
+        mediaServerBO.setHttpPort(getHttpPort());
+        mediaServerBO.setHttpSSlPort(getHttpSSlPort());
+        mediaServerBO.setRtmpPort(getRtmpPort());
+        mediaServerBO.setRtmpSSlPort(getRtmpSSlPort());
+        mediaServerBO.setRtpProxyPort(getRtpProxyPort());
+        mediaServerBO.setRtspPort(getRtspPort());
+        mediaServerBO.setRtspSSLPort(getRtspSSLPort());
+        mediaServerBO.setAutoConfig(getAutoConfig());
+        mediaServerBO.setSecret(getSecret());
+        mediaServerBO.setRtpEnable(getRtpEnable());
+        mediaServerBO.setRtpPortRange(getRtpPortRange());
+        mediaServerBO.setRecordAssistPort(getRecordAssistPort());
+        mediaServerBO.setDefaultServer(getDefaultServer());
+        mediaServerBO.setCreateTime(getCreateTime());
+        mediaServerBO.setUpdateTime(getUpdateTime());
+        mediaServerBO.setHookAliveInterval(getHookAliveInterval());
+        mediaServerBO.setHookAliveLastTime(getHookAliveLastTime());
+
+        return mediaServerBO;
+    }
 
 }

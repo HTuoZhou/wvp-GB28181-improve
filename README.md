@@ -4,7 +4,7 @@
 
   > 拉取镜像：sudo docker pull zlmediakit/zlmediakit:master
   >
-  > 创建容器：sudo docker run --name zlmediakit -d -p 8080:80 -p 8554:554 -p 8935:1935 -p 10000:10000 -p 10000:10000/udp -p 8000:8000/udp -p 30000-30500:30000-30500 -p 30000-30500:30000-30500/udp zlmediakit/zlmediakit:master
+  > 创建容器：sudo docker run --name zlmediakit --restart=always -d -p 8080:80 -p 8554:554 -p 8935:1935 -p 10000:10000 -p 10000:10000/udp -p 8000:8000/udp -p 30000-30500:30000-30500 -p 30000-30500:30000-30500/udp zlmediakit/zlmediakit:master
 
 - **zlmediakit默认的config.ini文件内容：**
 

@@ -64,7 +64,7 @@ public class SIPRunner implements CommandLineRunner {
         try {
             sipStack = (SipStackImpl) sipFactory.createSipStack(DefaultProperties.getProperties(monitorIp, false));
         } catch (PeerUnavailableException e) {
-            log.error("[Sip Server] SIP服务启动失败， 监听地址{}失败,请检查ip是否正确", monitorIp);
+            log.error("[Sip Server] [Sip Ip:{}] 启动失败,请检查ip是否正确", monitorIp);
             return;
         }
 
@@ -76,13 +76,12 @@ public class SIPRunner implements CommandLineRunner {
             tcpSipProvider.addSipListener(sipProcessorObserver);
             tcpSipProviderMap.put(monitorIp, tcpSipProvider);
 
-            log.info("[Sip Server] tcp://{}:{} 启动成功", monitorIp, port);
+            log.info("[Sip Server] [Sip Tcp Address:{}] 启动成功", monitorIp + "://" + port);
         } catch (TransportNotSupportedException
                 | TooManyListenersException
                 | ObjectInUseException
                 | InvalidArgumentException e) {
-            log.error("[Sip Server] tcp://{}:{} SIP服务启动失败,请检查端口是否被占用或者ip是否正确"
-                    , monitorIp, port);
+            log.error("[Sip Server] [Sip Tcp Address:{}] 启动失败,请检查端口是否被占用", monitorIp + "://" + port);
         }
 
         try {
@@ -93,13 +92,12 @@ public class SIPRunner implements CommandLineRunner {
 
             udpSipProviderMap.put(monitorIp, udpSipProvider);
 
-            log.info("[Sip Server] udp://{}:{} 启动成功", monitorIp, port);
+            log.info("[Sip Server] [Sip Udp Address:{}] 启动成功", monitorIp + "://" + port);
         } catch (TransportNotSupportedException
                 | TooManyListenersException
                 | ObjectInUseException
                 | InvalidArgumentException e) {
-            log.error("[Sip Server] udp://{}:{} SIP服务启动失败,请检查端口是否被占用或者ip是否正确"
-                    , monitorIp, port);
+            log.error("[Sip Server] [Sip Udp Address:{}] 启动失败,请检查端口是否被占用", monitorIp + "://" + port);
         }
     }
 }

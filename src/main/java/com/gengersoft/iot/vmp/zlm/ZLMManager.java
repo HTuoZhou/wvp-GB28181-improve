@@ -75,14 +75,14 @@ public class ZLMManager {
             ZLMResult result = postForm(ZLMConstant.SET_SERVER_CONFIG, param);
             if (result.getCode() == 0) {
                 if (result.getChanged() > 0) {
-                    log.info("[ZLM] [ZLM ServerId：{}]设置服务器配置成功, 存在配置变更，需要重启以保证配置生效！", zlmProperties.getServerId());
+                    log.info("[ZLM] [ZLM ServerId:{}] 设置服务器配置成功,存在配置变更,需要重启以保证配置生效!", zlmProperties.getServerId());
                     restartServer();
                 } else {
-                    log.info("[ZLM] [ZLM ServerId：{}]设置服务器配置成功, 不存在配置变更", zlmProperties.getServerId());
+                    log.info("[ZLM] [ZLM ServerId:{}] 设置服务器配置成功,不存在配置变更", zlmProperties.getServerId());
                 }
             }
         } catch (Exception e) {
-            log.error("[ZLM] [ZLM ServerId：{}]设置服务器配置失败，请确认ZLM是否启动！", zlmProperties.getServerId());
+            log.error("[ZLM] [ZLM ServerId:{}] 设置服务器配置失败,请确认ZLM是否启动!", zlmProperties.getServerId());
         }
     }
 
@@ -93,12 +93,12 @@ public class ZLMManager {
         ZLMResult result = postForm(ZLMConstant.RESTART_SERVER, new HashMap<>());
         try {
             if (result.getCode() == 0) {
-                log.info("[ZLM] [ZLM ServerId：{}]重启服务器成功，{}！", zlmProperties.getServerId(), result.getMsg());
+                log.info("[ZLM] [ZLM ServerId:{}] 重启服务器成功,{}!", zlmProperties.getServerId(), result.getMsg());
                 MediaServerBO mediaServerBO = properties2bo();
                 mediaServerService.saveOrUpdateMediaServer(mediaServerBO);
             }
         } catch (Exception e) {
-            log.error("[ZLM] [ZLM ServerId：{}]重启服务器失败，请确认ZLM是否启动！", zlmProperties.getServerId());
+            log.error("[ZLM] [ZLM ServerId:{}] 重启服务器失败,请确认ZLM是否启动!", zlmProperties.getServerId());
         }
     }
 
