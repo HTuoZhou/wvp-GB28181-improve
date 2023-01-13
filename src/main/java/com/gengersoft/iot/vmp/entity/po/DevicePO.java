@@ -49,7 +49,7 @@ public class DevicePO implements Serializable {
     private String streamMode;
 
     @TableField("online")
-    private String online;
+    private Integer online;
 
     @TableField("registerTime")
     private LocalDateTime registerTime;

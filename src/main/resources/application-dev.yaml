@@ -1,16 +1,16 @@
 server:
   port: 18080
 #  servlet:
-#    context-path: /wvp
+#    context-path: /wvp-GB28181-improve
 
 spring:
   application:
-    name: wvp
+    name: wvp-GB28181-improve
   flyway:
     enabled: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.124.20:3306/wvp?serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://192.168.176.169:3306/wvp?serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false&characterEncoding=utf8
     username: root
     password: 123456
 
@@ -24,14 +24,14 @@ mybatis-plus:
 # 作为GB28181服务器的配置
 sip:
   # 本机的IP
-  ip: 192.168.124.20
+  ip: 192.168.190.118
   # GB28181服务监听的端口
   port: 15060
   # 根据国标6.1.2中规定，domain宜采用ID统一编码的前十位编码。国标附录D中定义前8位为中心编码（由省级、市级、区级、基层编号组成，参照GB/T 2260-2007）
   # 后两位为行业编码，定义参照附录D.3
   # 3701020049标识山东济南历下区 信息行业接入
-  domain: 4401020049
-  id: 44010200492000000001
+  domain: 3402000000
+  id: 34020000002000000002
   # 默认设备认证密码，后续扩展使用设备单独密码, 移除密码将不进行校验
   password: admin123
   # 国标级联注册失败，再次发起注册的时间间隔。 默认60秒
@@ -46,13 +46,13 @@ zlm:
   # zlm服务器唯一id，用于触发hook时区别是哪台服务器,general.mediaServerId
   server-id: FQ3TF8yT83wh5Wvz
   # zlm服务器的内网IP
-  ip: 192.168.124.20
+  ip: 192.168.176.169
   # zlm服务器的hook所使用的IP
-  hook-ip: 192.168.124.20
+  hook-ip: 192.168.190.118
   # wvp在国标信令中使用的ip，此ip为摄像机可以访问到的ip
-  sdp-ip: 192.168.124.20
+  sdp-ip: 192.168.176.169
   # 返回流地址时的ip
-  stream-ip: 192.168.124.20
+  stream-ip: 192.168.176.169
   # zlm服务器的http.port
   http-port: 8080
   # zlm服务器的rtmp.port
@@ -73,4 +73,4 @@ zlm:
   # 录像辅助服务， 部署此服务可以实现zlm录像的管理与下载， 0 表示不使用
   record-assist-port: 0
   # zlm服务器的 hook.alive_interval, 置空使用zlm配置文件配置
-  hook-alive-interval: 60
+  hook-alive-interval: 180

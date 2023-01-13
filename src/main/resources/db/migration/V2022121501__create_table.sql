@@ -12,7 +12,7 @@ CREATE TABLE `device`
     `firmware`                         varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
     `transport`                        varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  DEFAULT NULL,
     `streamMode`                       varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  DEFAULT NULL,
-    `online`                           varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  DEFAULT NULL,
+    `online`                           int  DEFAULT NULL,
     `registerTime`                     datetime                                                     NOT NULL,
     `keepaliveTime`                    datetime                                                     NOT NULL,
     `ip`                               varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  DEFAULT NULL,

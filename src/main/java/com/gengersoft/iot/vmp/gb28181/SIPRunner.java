@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import javax.sip.*;
 import java.util.*;
@@ -20,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2022/12/21
  */
 @Component
-@Order(1)
+@Order(1000)
 @Slf4j
 public class SIPRunner implements CommandLineRunner {
 
@@ -99,5 +100,44 @@ public class SIPRunner implements CommandLineRunner {
                 | InvalidArgumentException e) {
             log.error("[Sip Server] [Sip Udp Address:{}] 启动失败,请检查端口是否被占用", monitorIp + "://" + port);
         }
+    }
+
+    public SipFactory getSipFactory() {
+        return sipFactory;
+    }
+
+    public SipProviderImpl getUdpSipProvider(String ip) {
+        if (ObjectUtils.isEmpty(ip)) {
+            return null;
+        }
+        return udpSipProviderMap.get(ip);
+    }
+
+    public SipProviderImpl getUdpSipProvider() {
+        if (udpSipProviderMap.size() != 1) {
+            return null;
+        }
+        return udpSipProviderMap.values().stream().findFirst().get();
+    }
+
+    public SipProviderImpl getTcpSipProvider() {
+        if (tcpSipProviderMap.size() != 1) {
+            return null;
+        }
+        return tcpSipProviderMap.values().stream().findFirst().get();
+    }
+
+    public SipProviderImpl getTcpSipProvider(String ip) {
+        if (ObjectUtils.isEmpty(ip)) {
+            return null;
+        }
+        return tcpSipProviderMap.get(ip);
+    }
+
+    public String getLocalIp(String deviceLocalIp) {
+        if (!ObjectUtils.isEmpty(deviceLocalIp)) {
+            return deviceLocalIp;
+        }
+        return getUdpSipProvider().getListeningPoint().getIPAddress();
     }
 }

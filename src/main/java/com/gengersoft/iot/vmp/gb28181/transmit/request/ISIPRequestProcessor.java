@@ -1,4 +1,4 @@
-package com.gengersoft.iot.vmp.gb28181.event.request;
+package com.gengersoft.iot.vmp.gb28181.transmit.request;
 
 import javax.sip.RequestEvent;
 

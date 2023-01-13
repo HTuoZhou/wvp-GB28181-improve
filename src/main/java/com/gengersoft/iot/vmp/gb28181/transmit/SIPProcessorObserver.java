@@ -1,7 +1,7 @@
 package com.gengersoft.iot.vmp.gb28181.transmit;
 
-import com.gengersoft.iot.vmp.gb28181.event.request.ISIPRequestProcessor;
-import com.gengersoft.iot.vmp.gb28181.event.response.ISIPResponseProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.response.ISIPResponseProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.request.ISIPRequestProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -22,12 +22,20 @@ public class SIPProcessorObserver implements ISIPProcessorObserver {
 
     private static Map<String, ISIPResponseProcessor> responseProcessorMap = new ConcurrentHashMap<>();
 
+    public void addRequestProcessor(String method, ISIPRequestProcessor processor) {
+        requestProcessorMap.put(method, processor);
+    }
+
+    public void addResponseProcessor(String method, ISIPResponseProcessor processor) {
+        responseProcessorMap.put(method, processor);
+    }
+
     @Override
     public void processRequest(RequestEvent requestEvent) {
         String method = requestEvent.getRequest().getMethod();
         ISIPRequestProcessor sipRequestProcessor = requestProcessorMap.get(method);
         if (Objects.isNull(sipRequestProcessor)) {
-            log.error("[Request] [Request Method:{}] 暂不支持", method);
+            log.warn("[Request] [Request Method:{}] 暂不支持", method);
             return;
         }
         requestProcessorMap.get(method).process(requestEvent);
@@ -56,23 +64,5 @@ public class SIPProcessorObserver implements ISIPProcessorObserver {
     @Override
     public void processDialogTerminated(DialogTerminatedEvent dialogTerminatedEvent) {
 
-    }
-
-    /**
-     * 添加 request 订阅
-     * @param method
-     * @param processor
-     */
-    public void addRequestProcessor(String method, ISIPRequestProcessor processor) {
-        requestProcessorMap.put(method, processor);
-    }
-
-    /**
-     * 添加 response 订阅
-     * @param method
-     * @param processor
-     */
-    public void addResponseProcessor(String method, ISIPResponseProcessor processor) {
-        responseProcessorMap.put(method, processor);
     }
 }
