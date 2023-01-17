@@ -1,4 +1,4 @@
-package com.gengersoft.iot.vmp.common.constant;
+package com.gengersoft.iot.vmp.constant;
 
 /**
  * @author hanzai

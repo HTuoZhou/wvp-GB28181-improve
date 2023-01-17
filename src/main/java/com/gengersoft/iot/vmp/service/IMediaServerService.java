@@ -16,4 +16,5 @@ public interface IMediaServerService extends IService<MediaServerPO> {
 
     Boolean saveOrUpdateMediaServer(MediaServerBO mediaServerBO);
 
+    void offline();
 }

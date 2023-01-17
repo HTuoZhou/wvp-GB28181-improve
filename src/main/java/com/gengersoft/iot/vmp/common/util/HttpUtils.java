@@ -55,7 +55,7 @@ public class HttpUtils {
                 return response.getBody();
             }
         } catch (Exception e) {
-            log.info(e.getMessage(), e);
+            log.error("URL:{},http post error", url);
         }
         return StringUtils.EMPTY;
     }

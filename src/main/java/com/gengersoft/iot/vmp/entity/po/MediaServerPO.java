@@ -25,11 +25,8 @@ public class MediaServerPO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-
-    @TableField("serverId")
-    private String serverId;
+    @TableId(value = "id",type = IdType.INPUT)
+    private String id;
 
     @TableField("ip")
     private String ip;
@@ -94,8 +91,11 @@ public class MediaServerPO implements Serializable {
     @TableField("hookAliveLastTime")
     private LocalDateTime hookAliveLastTime;
 
+    @TableField("status")
+    private Integer status;
+
     public void bo2po(MediaServerBO mediaServerBO) {
-        this.setServerId(mediaServerBO.getServerId());
+        this.setIp(mediaServerBO.getId());
         this.setIp(mediaServerBO.getIp());
         this.setHookIp(mediaServerBO.getHookIp());
         this.setSdpIp(mediaServerBO.getSdpIp());
@@ -116,11 +116,10 @@ public class MediaServerPO implements Serializable {
         this.setHookAliveInterval(mediaServerBO.getHookAliveInterval());
     }
 
-    public MediaServerBO po2vo() {
+    public MediaServerBO po2bo() {
         MediaServerBO mediaServerBO = new MediaServerBO();
 
         mediaServerBO.setId(getId());
-        mediaServerBO.setServerId(getServerId());
         mediaServerBO.setIp(getIp());
         mediaServerBO.setHookIp(getHookIp());
         mediaServerBO.setSdpIp(getSdpIp());
@@ -142,6 +141,7 @@ public class MediaServerPO implements Serializable {
         mediaServerBO.setUpdateTime(getUpdateTime());
         mediaServerBO.setHookAliveInterval(getHookAliveInterval());
         mediaServerBO.setHookAliveLastTime(getHookAliveLastTime());
+        mediaServerBO.setStatus(getStatus());
 
         return mediaServerBO;
     }

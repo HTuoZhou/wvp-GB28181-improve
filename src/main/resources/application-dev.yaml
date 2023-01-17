@@ -44,7 +44,7 @@ sip:
 #zlm默认服务器配置
 zlm:
   # zlm服务器唯一id，用于触发hook时区别是哪台服务器,general.mediaServerId
-  server-id: FQ3TF8yT83wh5Wvz
+  id: FQ3TF8yT83wh5Wvz
   # zlm服务器的内网IP
   ip: 192.168.176.169
   # zlm服务器的hook所使用的IP
@@ -72,5 +72,5 @@ zlm:
   rtp-port-range: 30000,30500
   # 录像辅助服务， 部署此服务可以实现zlm录像的管理与下载， 0 表示不使用
   record-assist-port: 0
-  # zlm服务器的 hook.alive_interval, 置空使用zlm配置文件配置
-  hook-alive-interval: 180
+  # zlm服务器的 hook.alive_interval
+  hook-alive-interval: 60

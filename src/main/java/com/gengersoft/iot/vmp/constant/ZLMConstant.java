@@ -1,4 +1,4 @@
-package com.gengersoft.iot.vmp.zlm.constant;
+package com.gengersoft.iot.vmp.constant;
 
 /**
  * @author hanzai
@@ -9,6 +9,8 @@ public class ZLMConstant {
     public static final String URL_FMT = "http://%s:%d/index/api/%s";
 
     public static final String HOOK_URL_FMT = "http://%s/zlm/index/hook";
+
+    public static final String GET_SERVER_CONFIG = "getServerConfig";
 
     public static final String SET_SERVER_CONFIG = "setServerConfig";
 

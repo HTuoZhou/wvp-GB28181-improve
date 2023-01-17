@@ -37,6 +37,6 @@ public class ServerServiceImpl implements IServerService {
             return Collections.emptyList();
         }
 
-        return mediaServerPOList.stream().map(MediaServerPO::po2vo).collect(Collectors.toList());
+        return mediaServerPOList.stream().map(MediaServerPO::po2bo).collect(Collectors.toList());
     }
 }

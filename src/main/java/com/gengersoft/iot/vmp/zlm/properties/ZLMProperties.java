@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class ZLMProperties {
 
-    private String serverId;
+    private String id;
     private String ip;
     private String hookIp;
     private String sdpIp;

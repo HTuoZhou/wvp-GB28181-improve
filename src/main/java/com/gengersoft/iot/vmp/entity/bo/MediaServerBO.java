@@ -24,9 +24,7 @@ public class MediaServerBO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
-
-    private String serverId;
+    private String id;
 
     private String ip;
 
@@ -70,10 +68,12 @@ public class MediaServerBO implements Serializable {
 
     private LocalDateTime hookAliveLastTime;
 
+    private Integer status;
+
     public MediaServerPO bo2po() {
         MediaServerPO mediaServerPO = new MediaServerPO();
 
-        mediaServerPO.setServerId(getServerId());
+        mediaServerPO.setId(getId());
         mediaServerPO.setIp(getIp());
         mediaServerPO.setHookIp(getHookIp());
         mediaServerPO.setSdpIp(getSdpIp());
@@ -100,7 +100,6 @@ public class MediaServerBO implements Serializable {
         MediaServerVO mediaServerVO = new MediaServerVO();
 
         mediaServerVO.setId(getId());
-        mediaServerVO.setServerId(getServerId());
         mediaServerVO.setIp(getIp());
         mediaServerVO.setHookIp(getHookIp());
         mediaServerVO.setSdpIp(getSdpIp());
@@ -122,6 +121,7 @@ public class MediaServerBO implements Serializable {
         mediaServerVO.setUpdateTime(getUpdateTime());
         mediaServerVO.setHookAliveInterval(getHookAliveInterval());
         mediaServerVO.setHookAliveLastTime(getHookAliveLastTime());
+        mediaServerVO.setStatus(getStatus());
 
         return mediaServerVO;
     }

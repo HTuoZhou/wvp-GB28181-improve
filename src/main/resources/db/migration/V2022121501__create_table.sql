@@ -205,8 +205,7 @@ CREATE TABLE `log`
 DROP TABLE IF EXISTS `media_server`;
 CREATE TABLE `media_server`
 (
-    `id`                int                                                           NOT NULL AUTO_INCREMENT,
-    `serverId`          varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+    `id`                varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     `ip`                varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL,
     `hookIp`            varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL,
     `sdpIp`             varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL,
@@ -228,6 +227,7 @@ CREATE TABLE `media_server`
     `updateTime`        datetime                                                      NOT NULL,
     `hookAliveInterval` int                                                           NOT NULL,
     `hookAliveLastTime` datetime,
+    `status`            int                                              DEFAULT 0 NOT NULL   ,
     PRIMARY KEY (`id`) USING BTREE
 )
     ENGINE = InnoDB

@@ -25,12 +25,20 @@ public class MediaServerServiceImpl extends ServiceImpl<MediaServerMapper, Media
 
     @Override
     public Boolean saveOrUpdateMediaServer(MediaServerBO mediaServerBO) {
-        MediaServerPO mediaServerPO = getOne(Wrappers.<MediaServerPO>lambdaQuery().eq(MediaServerPO::getDefaultServer, 1));
+        MediaServerPO mediaServerPO = this.getOne(Wrappers.<MediaServerPO>lambdaQuery().eq(MediaServerPO::getDefaultServer, 1));
         if (Objects.isNull(mediaServerPO)) {
             mediaServerPO = mediaServerBO.bo2po();
         } else {
             mediaServerPO.bo2po(mediaServerBO);
         }
         return this.saveOrUpdate(mediaServerPO);
+    }
+
+    @Override
+    public void offline() {
+        this.update(Wrappers.<MediaServerPO>lambdaUpdate()
+                .set(MediaServerPO::getStatus,0)
+                .eq(MediaServerPO::getDefaultServer,1)
+                .eq(MediaServerPO::getStatus,1));
     }
 }

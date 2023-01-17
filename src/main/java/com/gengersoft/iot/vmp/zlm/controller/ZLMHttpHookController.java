@@ -40,8 +40,9 @@ public class ZLMHttpHookController {
         log.info("[ZLM HTTP HOOK] 收到 [ZLM ServerId：{}] 心跳", onServerKeepAliveVO.getMediaServerId());
 
         mediaServerService.update(Wrappers.<MediaServerPO>lambdaUpdate()
-                .eq(MediaServerPO::getServerId,onServerKeepAliveVO.getMediaServerId())
-                .set(MediaServerPO::getHookAliveLastTime, LocalDateTime.now()));
+                .eq(MediaServerPO::getId,onServerKeepAliveVO.getMediaServerId())
+                .set(MediaServerPO::getHookAliveLastTime, LocalDateTime.now())
+                .set(MediaServerPO::getStatus,1));
 
         return ZLM_RES_SUCCESS;
     }
@@ -49,6 +50,11 @@ public class ZLMHttpHookController {
     @PostMapping("/on_server_started")
     public JSONObject onServerStarted(@RequestBody OnServerStartedVO onServerStartedVO) {
         log.info("[ZLM HTTP HOOK] 收到 [ZLM ServerId：{}] 启动", onServerStartedVO.getMediaServerId());
+
+        mediaServerService.update(Wrappers.<MediaServerPO>lambdaUpdate()
+                .eq(MediaServerPO::getId,onServerStartedVO.getMediaServerId())
+                .set(MediaServerPO::getStatus,1));
+
         return ZLM_RES_SUCCESS;
     }
 

@@ -1,7 +1,6 @@
 package com.gengersoft.iot.vmp.zlm;
 
 import lombok.Data;
-import org.json.JSONObject;
 
 /**
  * @author hanzai
@@ -18,6 +17,6 @@ public class ZLMResult {
 
     private Integer result;
 
-    private JSONObject data;
+    private Object data;
 
 }

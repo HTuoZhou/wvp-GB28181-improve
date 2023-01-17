@@ -1,6 +1,6 @@
 package com.gengersoft.iot.vmp.common.util;
 
-import com.gengersoft.iot.vmp.common.constant.CommonConstant;
+import com.gengersoft.iot.vmp.constant.CommonConstant;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

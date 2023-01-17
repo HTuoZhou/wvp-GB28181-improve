@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/12/21
  */
 @Component
-@Order(10001)
+@Order(2)
 @Slf4j
 public class ZLMRunner implements CommandLineRunner {
 

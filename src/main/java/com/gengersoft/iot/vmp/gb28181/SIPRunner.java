@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2022/12/21
  */
 @Component
-@Order(1000)
+@Order(1)
 @Slf4j
 public class SIPRunner implements CommandLineRunner {
 

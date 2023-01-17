@@ -22,9 +22,7 @@ public class MediaServerVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
-
-    private String serverId;
+    private String id;
 
     private String ip;
 
@@ -68,5 +66,6 @@ public class MediaServerVO implements Serializable {
 
     private LocalDateTime hookAliveLastTime;
 
+    private Integer status;
 
 }
