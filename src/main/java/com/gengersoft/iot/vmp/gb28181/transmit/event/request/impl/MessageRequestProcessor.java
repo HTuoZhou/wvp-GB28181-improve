@@ -1,9 +1,13 @@
-package com.gengersoft.iot.vmp.gb28181.transmit.request.impl;
+package com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl;
 
+import com.gengersoft.iot.vmp.entity.bo.DeviceBO;
 import com.gengersoft.iot.vmp.gb28181.transmit.SIPProcessorObserver;
-import com.gengersoft.iot.vmp.gb28181.transmit.request.AbstractSIPRequestProcessor;
-import com.gengersoft.iot.vmp.gb28181.transmit.request.ISIPRequestProcessor;
-import com.gengersoft.iot.vmp.gb28181.transmit.request.impl.message.IMessageHandler;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.AbstractSIPRequestProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.ISIPRequestProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl.message.IMessageHandler;
+import com.gengersoft.iot.vmp.gb28181.util.SIPUtils;
+import com.gengersoft.iot.vmp.service.IDeviceService;
+import gov.nist.javax.sip.message.SIPRequest;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.Element;
@@ -28,6 +32,9 @@ public class MessageRequestProcessor extends AbstractSIPRequestProcessor impleme
     @Autowired
     private SIPProcessorObserver sipProcessorObserver;
 
+    @Autowired
+    private IDeviceService deviceService;
+
     private static Map<String, IMessageHandler> messageHandlerMap = new ConcurrentHashMap<>();
 
     public void addMessageHandler(String name, IMessageHandler handler) {
@@ -42,14 +49,20 @@ public class MessageRequestProcessor extends AbstractSIPRequestProcessor impleme
     @Override
     @SneakyThrows(Exception.class)
     public void process(RequestEvent requestEvent) {
+        SIPRequest request = (SIPRequest) requestEvent.getRequest();
+
         Element rootElement = getRootElement(requestEvent);
-        String name = getRootElement(requestEvent).getName();
+        String name = rootElement.getName();
         IMessageHandler messageHandler = messageHandlerMap.get(name);
         if (Objects.isNull(messageHandler)) {
             log.warn("[Message] [Message RootElement:{}] 暂不支持", name);
             return;
         }
 
-        messageHandlerMap.get(name).handForDevice(requestEvent,rootElement);
+        String deviceId = SIPUtils.getUserIdFromFromHeader(request);
+        DeviceBO deviceBO = deviceService.getDevice(deviceId);
+        if (Objects.nonNull(deviceBO)) {
+            messageHandlerMap.get(name).process(requestEvent,deviceBO,rootElement);
+        }
     }
 }

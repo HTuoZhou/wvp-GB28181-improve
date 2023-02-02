@@ -1,7 +1,7 @@
 package com.gengersoft.iot.vmp.gb28181.transmit;
 
-import com.gengersoft.iot.vmp.gb28181.transmit.response.ISIPResponseProcessor;
-import com.gengersoft.iot.vmp.gb28181.transmit.request.ISIPRequestProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.ISIPRequestProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.response.ISIPResponseProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

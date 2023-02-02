@@ -1,12 +1,15 @@
 package com.gengersoft.iot.vmp.entity.po;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.gengersoft.iot.vmp.entity.bo.DeviceBO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * <p>
@@ -111,5 +114,15 @@ public class DevicePO implements Serializable {
     @TableField("localIp")
     private String localIp;
 
+    public static DevicePO bo2po(DeviceBO bo) {
+        if (Objects.isNull(bo)) {
+            return null;
+        }
+
+        DevicePO po = new DevicePO();
+        BeanUtils.copyProperties(bo,po);
+
+        return po;
+    }
 
 }

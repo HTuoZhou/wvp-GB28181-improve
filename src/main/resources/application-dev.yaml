@@ -13,6 +13,10 @@ spring:
     url: jdbc:mysql://192.168.176.169:3306/wvp?serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false&characterEncoding=utf8
     username: root
     password: 123456
+  redis:
+    host: 192.168.176.169
+    port: 6379
+    password: 123456
 
 # mybatis-plus配置
 mybatis-plus:
@@ -20,6 +24,11 @@ mybatis-plus:
   type-aliases-package: com.gengersoft.iot.vmp.entity
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 是否开启Debug日志
+#logging:
+#  level:
+#    root: debug
 
 # 作为GB28181服务器的配置
 sip:

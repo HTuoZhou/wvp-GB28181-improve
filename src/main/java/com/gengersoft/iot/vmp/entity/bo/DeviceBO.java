@@ -1,11 +1,14 @@
 package com.gengersoft.iot.vmp.entity.bo;
 
+import com.gengersoft.iot.vmp.entity.po.DevicePO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * <p>
@@ -38,7 +41,7 @@ public class DeviceBO implements Serializable {
 
     private String streamMode;
 
-    private String online;
+    private Integer online;
 
     private LocalDateTime registerTime;
 
@@ -80,5 +83,14 @@ public class DeviceBO implements Serializable {
 
     private String localIp;
 
+    public static DeviceBO po2bo(DevicePO po) {
+        if (Objects.isNull(po)) {
+            return null;
+        }
 
+        DeviceBO bo = new DeviceBO();
+        BeanUtils.copyProperties(po,bo);
+
+        return bo;
+    }
 }

@@ -38,7 +38,7 @@ public class DeviceVO implements Serializable {
 
     private String streamMode;
 
-    private String online;
+    private Integer online;
 
     private LocalDateTime registerTime;
 

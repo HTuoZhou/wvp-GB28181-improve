@@ -1,4 +1,4 @@
-package com.gengersoft.iot.vmp.gb28181.transmit.response;
+package com.gengersoft.iot.vmp.gb28181.transmit.event.response;
 
 import lombok.extern.slf4j.Slf4j;
 

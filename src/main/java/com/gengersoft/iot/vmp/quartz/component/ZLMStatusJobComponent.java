@@ -4,14 +4,12 @@ import com.gengersoft.iot.vmp.constant.QuartzConstant;
 import com.gengersoft.iot.vmp.quartz.job.ZLMStatusJob;
 import com.gengersoft.iot.vmp.service.IMediaServerService;
 import com.gengersoft.iot.vmp.zlm.ZLMManager;
+import com.gengersoft.iot.vmp.zlm.properties.ZLMProperties;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-
-import java.util.Objects;
 
 /**
  * @author hanzai
@@ -22,7 +20,7 @@ import java.util.Objects;
 public class ZLMStatusJobComponent {
 
     @Autowired
-    private Environment environment;
+    private ZLMProperties zlmProperties;
 
     @Autowired
     private ZLMManager zlmManager;
@@ -33,6 +31,7 @@ public class ZLMStatusJobComponent {
     @Bean
     public JobDetail zlmStatusJobDetail() {
         JobDataMap jobDataMap = new JobDataMap();
+        jobDataMap.put("zlmProperties",zlmProperties);
         jobDataMap.put("zlmManager",zlmManager);
         jobDataMap.put("mediaServerService",mediaServerService);
 
@@ -46,7 +45,7 @@ public class ZLMStatusJobComponent {
     @Bean
     public Trigger zlmStatusJobTrigger() {
         SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                .withIntervalInSeconds(Integer.parseInt(Objects.requireNonNull(environment.getProperty(QuartzConstant.ZLM_HOOK_ALIVE_INTERVAL))) * 2)
+                .withIntervalInSeconds(zlmProperties.getHookAliveInterval() * 2)
                 .repeatForever();
 
         return TriggerBuilder.newTrigger()

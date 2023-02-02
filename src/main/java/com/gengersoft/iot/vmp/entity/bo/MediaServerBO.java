@@ -5,6 +5,7 @@ import com.gengersoft.iot.vmp.entity.vo.MediaServerVO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -36,17 +37,17 @@ public class MediaServerBO implements Serializable {
 
     private Integer httpPort;
 
-    private Integer httpSSlPort;
+    private Integer httpSslPort;
 
     private Integer rtmpPort;
 
-    private Integer rtmpSSlPort;
+    private Integer rtmpSslPort;
 
     private Integer rtpProxyPort;
 
     private Integer rtspPort;
 
-    private Integer rtspSSLPort;
+    private Integer rtspSslPort;
 
     private Integer autoConfig;
 
@@ -71,58 +72,16 @@ public class MediaServerBO implements Serializable {
     private Integer status;
 
     public MediaServerPO bo2po() {
-        MediaServerPO mediaServerPO = new MediaServerPO();
+        MediaServerPO po = new MediaServerPO();
+        BeanUtils.copyProperties(this,po);
 
-        mediaServerPO.setId(getId());
-        mediaServerPO.setIp(getIp());
-        mediaServerPO.setHookIp(getHookIp());
-        mediaServerPO.setSdpIp(getSdpIp());
-        mediaServerPO.setStreamIp(getStreamIp());
-        mediaServerPO.setHttpPort(getHttpPort());
-        mediaServerPO.setHttpSSlPort(getHttpSSlPort());
-        mediaServerPO.setRtmpPort(getRtmpPort());
-        mediaServerPO.setRtmpSSlPort(getRtmpSSlPort());
-        mediaServerPO.setRtpProxyPort(getRtpProxyPort());
-        mediaServerPO.setRtspPort(getRtspPort());
-        mediaServerPO.setRtspSSLPort(getRtspSSLPort());
-        mediaServerPO.setAutoConfig(getAutoConfig());
-        mediaServerPO.setSecret(getSecret());
-        mediaServerPO.setRtpEnable(getRtpEnable());
-        mediaServerPO.setRtpPortRange(getRtpPortRange());
-        mediaServerPO.setRecordAssistPort(getRecordAssistPort());
-        mediaServerPO.setDefaultServer(getDefaultServer());
-        mediaServerPO.setHookAliveInterval(getHookAliveInterval());
-
-        return mediaServerPO;
+        return po;
     }
 
     public MediaServerVO bo2vo() {
-        MediaServerVO mediaServerVO = new MediaServerVO();
+        MediaServerVO vo = new MediaServerVO();
+        BeanUtils.copyProperties(this,vo);
 
-        mediaServerVO.setId(getId());
-        mediaServerVO.setIp(getIp());
-        mediaServerVO.setHookIp(getHookIp());
-        mediaServerVO.setSdpIp(getSdpIp());
-        mediaServerVO.setStreamIp(getStreamIp());
-        mediaServerVO.setHttpPort(getHttpPort());
-        mediaServerVO.setHttpSSlPort(getHttpSSlPort());
-        mediaServerVO.setRtmpPort(getRtmpPort());
-        mediaServerVO.setRtmpSSlPort(getRtmpSSlPort());
-        mediaServerVO.setRtpProxyPort(getRtpProxyPort());
-        mediaServerVO.setRtspPort(getRtspPort());
-        mediaServerVO.setRtspSSLPort(getRtspSSLPort());
-        mediaServerVO.setAutoConfig(getAutoConfig());
-        mediaServerVO.setSecret(getSecret());
-        mediaServerVO.setRtpEnable(getRtpEnable());
-        mediaServerVO.setRtpPortRange(getRtpPortRange());
-        mediaServerVO.setRecordAssistPort(getRecordAssistPort());
-        mediaServerVO.setDefaultServer(getDefaultServer());
-        mediaServerVO.setCreateTime(getCreateTime());
-        mediaServerVO.setUpdateTime(getUpdateTime());
-        mediaServerVO.setHookAliveInterval(getHookAliveInterval());
-        mediaServerVO.setHookAliveLastTime(getHookAliveLastTime());
-        mediaServerVO.setStatus(getStatus());
-
-        return mediaServerVO;
+        return vo;
     }
 }

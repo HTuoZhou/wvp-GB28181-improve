@@ -1,8 +1,8 @@
-package com.gengersoft.iot.vmp.gb28181.transmit.request.impl.message.notify;
+package com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl.message.notify;
 
-import com.gengersoft.iot.vmp.gb28181.transmit.request.impl.MessageRequestProcessor;
-import com.gengersoft.iot.vmp.gb28181.transmit.request.impl.message.AbstractMessageHandler;
-import com.gengersoft.iot.vmp.gb28181.transmit.request.impl.message.IMessageHandler;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl.MessageRequestProcessor;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl.message.AbstractMessageHandler;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl.message.IMessageHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

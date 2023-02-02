@@ -1,6 +1,7 @@
-package com.gengersoft.iot.vmp.gb28181.transmit.request.impl.message;
+package com.gengersoft.iot.vmp.gb28181.transmit.event.request.impl.message;
 
-import com.gengersoft.iot.vmp.gb28181.transmit.request.AbstractSIPRequestProcessor;
+import com.gengersoft.iot.vmp.entity.bo.DeviceBO;
+import com.gengersoft.iot.vmp.gb28181.transmit.event.request.AbstractSIPRequestProcessor;
 import com.gengersoft.iot.vmp.gb28181.util.XmlUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.Element;
@@ -24,15 +25,15 @@ public abstract class AbstractMessageHandler extends AbstractSIPRequestProcessor
     }
 
     @Override
-    public void handForDevice(RequestEvent requestEvent, Element element) {
-        String cmdType = XmlUtils.getText(element, "CmdType");
+    public void process(RequestEvent requestEvent, DeviceBO deviceBO, Element rootElement) {
+        String cmdType = XmlUtils.getText(rootElement, "CmdType");
         IMessageHandler messageHandler = messageHandlerMap.get(cmdType);
         if (Objects.isNull(messageHandler)) {
-            log.warn("[Message] [Message CmdType:{}] 暂不支持", cmdType);
+            log.warn("[Message] [Message {} CmdType:{}] 暂不支持",rootElement.getName(), cmdType);
             return;
         }
 
-        messageHandlerMap.get(cmdType).handForDevice(requestEvent,element);
+        messageHandlerMap.get(cmdType).process(requestEvent,deviceBO,rootElement);
     }
 
 
